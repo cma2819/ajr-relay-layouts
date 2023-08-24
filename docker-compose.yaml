@@ -1,0 +1,9 @@
+services:
+  nodecg:
+    build: .
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./:/nodecg/bundles/bundle-name
+      - ./cfg:/nodecg/cfg
+      - ./db:/nodecg/db

@@ -1,0 +1,10 @@
+node_modules
+coverage
+bower_components
+
+/assets
+/cfg
+/db
+# /dashboard
+# /extension
+# /graphics

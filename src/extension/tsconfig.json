@@ -1,0 +1,14 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "types": ["node", "jest"],
+        "module": "commonjs",
+        "resolveJsonModule": true,
+        "rootDir": ".",
+        "outDir": "../../extension"
+    },
+    "include":[
+        "**/*.ts",
+        "../nodecg/**/*.ts"
+    ]
+}
