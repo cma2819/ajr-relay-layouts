@@ -22,6 +22,15 @@ const Panel = styled.div<{ color: string }>`
     background-color: ${props => props.color};
 `;
 
+const DoneTimePanel = styled(Panel)`
+  font-size: 42px;
+  padding: 8px 16px;
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+  align-self: start;
+  text-align: center;
+`;
+
 const NamePanel = styled(Panel)`
     padding: 8px 16px;
     grid-column: 1 / 2;
@@ -35,13 +44,18 @@ const AudioPanel = styled(Panel)`
 `;
 
 export const ViewFrame = ({team: teamIndex}: ViewFrameProps) => {
-  const current = useReplicant('current-checkpoints');
+  const currents = useReplicant('current-checkpoints');
+  const totals = useReplicant('total-times');
   const teams = useTeams();
   const team = teams?.[teamIndex];
-  const runner = team.members?.[current?.[teamIndex]?.game];
+  const runner = team.members?.[currents?.[teamIndex]?.game];
 
   const audioAssign = useReplicant('audio-assign');
   const onAudio = audioAssign.includes(teamIndex);
+
+  const isDone = currents?.[teamIndex]?.isDone;
+  const [lastGameTotals] = totals.slice(-1)
+  const lastTime = lastGameTotals?.[teamIndex];
 
   return (
     <Container color={team.color}>
@@ -53,6 +67,11 @@ export const ViewFrame = ({team: teamIndex}: ViewFrameProps) => {
           <AudioPanel color={team.color}>
             <FontAwesomeIcon icon={faVolumeHigh} />
           </AudioPanel>
+        )
+      }
+      {
+        isDone && (
+          <DoneTimePanel color={team.color}>{ lastTime.displayedTime}</DoneTimePanel>
         )
       }
     </Container>

@@ -9,7 +9,8 @@
       "properties": {
         "displayedTime": { "type": "string" },
         "time": { "type": "number" }
-      }
+      },
+      "required": ["displayedTime", "time"]
     }
   }
 }

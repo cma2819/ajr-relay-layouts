@@ -6,6 +6,7 @@
  */
 
 export type CurrentCheckpoints = {
+	isDone: boolean;
 	game: number;
 	diffCpCount: number;
 	label: string;

@@ -107,6 +107,7 @@ export const summary = (nodecg: NodeCG, calc: TimeCalculation): void => {
       const [last] = resultAndIndexes.slice(-1);
       if (!last) {
         return {
+          isDone: false,
           game: 0,
           label: games?.[0]?.segments?.[0],
           totalSegments: 0,
@@ -116,6 +117,7 @@ export const summary = (nodecg: NodeCG, calc: TimeCalculation): void => {
       const [gIndex, sIndex] = lastIndexes;
       if (!games[gIndex]?.segments?.[sIndex + 1] && !games[gIndex + 1]) {
         return {
+          isDone: true,
           game: gIndex,
           label: '完走！！！',
           totalSegments: calcTotalSegmentTo(gIndex, sIndex) + 1,
@@ -125,16 +127,18 @@ export const summary = (nodecg: NodeCG, calc: TimeCalculation): void => {
       const nextGame = games?.[gIndex]?.segments?.[sIndex + 1] ? gIndex : gIndex + 1;
       const nextSegment = games?.[gIndex]?.segments?.[sIndex + 1] ? sIndex + 1 : 0;
       return {
+        isDone: false,
         game: nextGame,
         label: games?.[nextGame]?.segments?.[nextSegment],
-        totalSegments: calcTotalSegmentTo(gIndex, sIndex),
+        totalSegments: calcTotalSegmentTo(nextGame, nextSegment),
       }
     });
 
     const totals = currentCpsByTeam.map(({ totalSegments }) => totalSegments);
     const topTotals = Math.max(...totals);
 
-    currentCheckpointsRep.value = currentCpsByTeam.map(({ label, game, totalSegments }) => ({
+    currentCheckpointsRep.value = currentCpsByTeam.map(({ isDone, label, game, totalSegments }) => ({
+      isDone,
       label,
       game,
       diffCpCount: topTotals - totalSegments,

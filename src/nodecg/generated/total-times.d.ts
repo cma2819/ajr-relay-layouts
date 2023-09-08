@@ -6,6 +6,6 @@
  */
 
 export type TotalTimes = {
-	displayedTime?: string;
-	time?: number;
+	displayedTime: string;
+	time: number;
 }[][];

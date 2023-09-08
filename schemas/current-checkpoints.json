@@ -5,10 +5,11 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
+      "isDone": { "type": "boolean" },
       "game": { "type": "number" },
       "diffCpCount": { "type": "number" },
       "label": { "type": "string" }
     },
-    "required": ["diffCpCount", "label", "game"]
+    "required": ["isDone", "diffCpCount", "label", "game"]
   }
 }
