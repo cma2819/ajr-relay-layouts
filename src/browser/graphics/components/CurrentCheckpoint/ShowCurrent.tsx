@@ -18,7 +18,7 @@ const Container = styled.div<{
 `;
 
 const CheckpointPlate = styled.span`
-    width: 180px;
+    width: 216px;
     color: #222222;
     background-color: #ffffff;
     border-radius: 8px;

@@ -26,7 +26,7 @@ const Border = styled.div`
 const ViewTypes = ['current', 'latest'] as const
 export type ViewType = typeof ViewTypes[number];
 
-const SWITCH_VIEW_INTERVAL = 60_000;
+const SWITCH_VIEW_INTERVAL = 180_000;
 
 export const ProgressView = () => {
   const [ type, setType ] = useState<ViewType>('current');

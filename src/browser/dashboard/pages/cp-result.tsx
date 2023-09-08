@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { ReplicantProvider } from '../../ReplicantProvider';
 import { TeamsProvider } from '../../TeamsProvider';
 import { AudioControl } from '../components/AudioControl';
+import { Commentators } from '../components/Commentators';
 import { LatestResults } from '../components/LatestResults';
 import { ProgressChart } from '../components/ProgressChart';
 import { SwitchViewControl } from '../components/SwitchViewControl';
@@ -41,6 +42,7 @@ const App = () => {
                 </Paper>
                 <AudioControl />
                 <SwitchViewControl />
+                <Commentators />
                 <TimerControl />
               </Stack>
             </Grid>

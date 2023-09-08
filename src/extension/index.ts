@@ -1,4 +1,3 @@
-import { voiceChannel } from './voiceChannel';
 import { NodeCG } from './nodecg';
 import { progress } from './progress';
 import { summary } from './summary';
@@ -11,5 +10,5 @@ export default (nodecg: NodeCG): void => {
   summary(nodecg, SumOfGameResults);
   progress(nodecg);
   timer(nodecg);
-  voiceChannel(nodecg);
+  // voiceChannel(nodecg);
 };
