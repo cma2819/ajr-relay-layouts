@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "array",
+  "items": {
+    "type": "array",
+    "items": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "time": { "type": "number" },
+              "displayedTime": { "type": "string" }
+            },
+            "required": ["time", "displayedTime"]
+          },
+          { "type": "null" }
+        ]
+      }
+    }
+  }
+}

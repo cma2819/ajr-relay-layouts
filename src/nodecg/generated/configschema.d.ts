@@ -6,5 +6,36 @@
  */
 
 export interface Configschema {
-	someProp: string;
+	games: {
+		name: string;
+		category: string;
+		segments: string[];
+	}[];
+	runners: {
+		pk: string;
+		name: string;
+		socials: {
+			twitter?: string;
+			[k: string]: unknown;
+		};
+		stream: {
+			platform: 'twitch' | 'nico' | 'youtube';
+			username: string;
+		};
+	}[];
+	teams: {
+		name: string;
+		color: string;
+		members: {
+			pk: string;
+			result: string;
+		}[];
+	}[];
+	discord: {
+		guildId: string;
+		voiceChannelId: string;
+		token: string;
+		botId: string;
+		commandChannelId: string;
+	};
 }

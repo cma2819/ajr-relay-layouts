@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "game": { "type": "number" },
+      "diffCpCount": { "type": "number" },
+      "label": { "type": "string" }
+    },
+    "required": ["diffCpCount", "label", "game"]
+  }
+}

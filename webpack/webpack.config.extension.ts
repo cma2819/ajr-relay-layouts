@@ -7,6 +7,8 @@ export const extensionConfig: Configuration = {
   node: false,
   externals: [
     webpackNodeExternals(),
+    'discord.js',
+    '@discordjs/voice',
   ],
   entry: path.resolve(__dirname, '../src/extension/index.ts'),
   module: {

@@ -5,10 +5,11 @@
         "module": "commonjs",
         "resolveJsonModule": true,
         "rootDir": ".",
-        "outDir": "../../extension"
+        "outDir": "../../extension",
+        "skipLibCheck": true
     },
     "include":[
-        "**/*.ts",
+        "src/**/*.ts",
         "../nodecg/**/*.ts"
     ]
 }

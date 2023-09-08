@@ -1,9 +1,12 @@
 services:
   nodecg:
-    build: .
+    image: "ghcr.io/nodecg/nodecg:latest"
     ports:
       - "9090:9090"
     volumes:
-      - ./:/nodecg/bundles/bundle-name
-      - ./cfg:/nodecg/cfg
-      - ./db:/nodecg/db
+      - nodecg-volumes:/opt/nodecg/db
+      - ./:/opt/nodecg/bundles/ajr-relay-layouts
+      - ./cfg:/opt/nodecg/cfg
+      - ./logs:/opt/nodecg/logs
+volumes:
+  nodecg-volumes:

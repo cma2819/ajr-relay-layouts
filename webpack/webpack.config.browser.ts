@@ -4,6 +4,11 @@ import globby from 'globby';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const targets = ['dashboard', 'graphics'];
+const kitId = process.env.kitId ?? '';
+
+if (!kitId) {
+  console.warn('kitId is not specified. Font should not be applied.');
+}
 
 const makeBrowserConfig = (target: string): Configuration => {
 
@@ -36,13 +41,12 @@ const makeBrowserConfig = (target: string): Configuration => {
   
         },
         {
-          test: /\.png/,
+          test: /\.(png|gif)/,
           type: 'asset/resource',
         },
         {
   
           test: /\.(woff|woff2|eot|ttf|otf)$/i,
-  
           type: 'asset/resource',
   
         },
@@ -62,6 +66,7 @@ const makeBrowserConfig = (target: string): Configuration => {
           filename: `${name}.html`,
           chunks: [name],
           template: path.resolve(__dirname, `./templates/${target}.html`),
+          kitId: process.env.kitId,
         })
       )
     ],

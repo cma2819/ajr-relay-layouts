@@ -3,14 +3,14 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import React, { ReactNode } from 'react';
 
 type Props = {
-  children: ReactNode
+  children: ReactNode,
 };
 
 export const DashboardThemeProvider = ({children}: Props) => {
 
   const theme = createTheme({
     palette: {
-      mode: 'dark',
+      mode: 'light',
     }
   });
 

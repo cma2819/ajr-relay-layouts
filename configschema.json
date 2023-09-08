@@ -1,14 +1,97 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
-    "type": "object",
-    "properties": {
-        "someProp": {
-            "type": "string",
-            "default": "defualt value"
-        }
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "properties": {
+    "games": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "category": { "type": "string" },
+          "segments": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["name", "category", "segments"]
+      }
     },
-    "additionalProperties": false,
-    "required": [
-        "someProp"
-    ]
+    "runners": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "pk": { "type": "string" },
+          "name": { "type": "string" },
+          "socials": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "twitter": { "type": "string" }
+            }
+          },
+          "stream": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "platform": {
+                "type": "string",
+                "enum": ["twitch", "nico", "youtube"]
+              },
+              "username": { "type": "string" }
+            },
+            "required": ["platform", "username"]
+          }
+        },
+        "required": ["pk", "name", "socials", "stream"]
+      }
+    },
+    "teams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "color": { "type": "string" },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "pk": { "type": "string" },
+                "result": { "type": "string" }
+              },
+              "additionalProperties": false,
+              "required": ["pk", "result"]
+            }
+          }
+        },
+        "required": ["name", "color", "members"]
+      }
+    },
+    "discord": {
+      "type": "object",
+      "properties": {
+        "guildId": { "type": "string" },
+        "voiceChannelId": { "type": "string" },
+        "token": { "type": "string" },
+        "botId": { "type": "string" },
+        "commandChannelId": { "type": "string" }
+      },
+      "additionalProperties": false,
+      "required": [
+        "guildId",
+        "token",
+        "voiceChannelId",
+        "botId",
+        "commandChannelId"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["games", "runners", "teams", "discord"]
 }

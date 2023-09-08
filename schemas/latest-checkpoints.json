@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "segment": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "game": { "type": "number" },
+            "index": { "type": "number" }
+          },
+          "required": ["game", "index"]
+        },
+        "times": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "rank": { "type": "number" },
+              "time": { "type": "string" },
+              "diffInSeconds": { "type": "number" }
+            },
+            "required": ["rank", "time", "diffInSeconds"]
+          }
+        }
+      },
+      "required": ["segment", "times"]
+    },
+    { "type": "null" }
+  ]
+}

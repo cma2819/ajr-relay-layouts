@@ -1,14 +1,20 @@
-import { CreateNodecgConstructor, CreateNodecgInstance } from 'ts-nodecg/browser';
+import {
+  CreateNodecgConstructor,
+  CreateNodecgInstance,
+} from 'ts-nodecg/browser';
+import { Configschema } from '../nodecg/generated';
+import { MessageMap } from '../nodecg/messages';
+import { ReplicantMap } from '../nodecg/replicants';
 
 export type BundleNodecgInstance = CreateNodecgInstance<
-  '<bundle-name>',
+  'ajr-relay-layouts',
   Configschema,
   ReplicantMap,
   MessageMap
 >;
 
 export type BundleNodecgConstructor = CreateNodecgConstructor<
-  '<bundle-name>',
+  'ajr-relay-layouts',
   Configschema,
   ReplicantMap,
   MessageMap

@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "label": { "type": "string" },
+      "ranks": {
+        "type": "array",
+        "items": {
+          "oneOf": [{ "type": "null" }, { "type": "number" }]
+        }
+      }
+    },
+    "required": ["label", "ranks"]
+  }
+}

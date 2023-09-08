@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "startAt": { "type": "number" },
+    "time": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "inSecond": { "type": "number" },
+        "displayed": { "type": "string" }
+      },
+      "required": ["inSecond", "displayed"]
+    }
+  },
+  "required": ["startAt", "time"]
+}
