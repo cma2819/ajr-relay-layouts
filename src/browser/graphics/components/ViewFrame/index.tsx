@@ -1,3 +1,4 @@
+import { faTwitch, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faVolumeHigh } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
@@ -37,6 +38,10 @@ const NamePanel = styled(Panel)`
     grid-row: 2 / 3;
 `;
 
+const StreamSpan = styled.span`
+  padding: 0px 8px;
+`;
+
 const AudioPanel = styled(Panel)`
     padding: 16px;
     grid-column: 3 / 4;
@@ -61,6 +66,19 @@ export const ViewFrame = ({team: teamIndex}: ViewFrameProps) => {
     <Container color={team.color}>
       <NamePanel color={team.color}>
         { runner?.name }
+        <StreamSpan>
+          {
+            runner?.stream.platform === 'twitch' && (
+              <FontAwesomeIcon icon={faTwitch} />
+            )
+          }
+          {
+            runner?.stream.platform === 'youtube' && (
+              <FontAwesomeIcon icon={faYoutube} />
+            )
+          }
+        </StreamSpan>
+        { runner?.stream.username}
       </NamePanel>
       {
         onAudio && (
