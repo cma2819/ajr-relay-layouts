@@ -32,6 +32,14 @@ const DoneTimePanel = styled(Panel)`
   text-align: center;
 `;
 
+const NoticePanel = styled(Panel)`
+  padding: 8px 16px;
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+  align-self: start;
+  text-align: center;
+`;
+
 const NamePanel = styled(Panel)`
     padding: 8px 16px;
     grid-column: 1 / 2;
@@ -62,6 +70,8 @@ export const ViewFrame = ({team: teamIndex}: ViewFrameProps) => {
   const [lastGameTotals] = totals.slice(-1)
   const lastTime = lastGameTotals?.[teamIndex];
 
+  const isMinecraft = currents?.[teamIndex]?.game === 8;
+
   return (
     <Container color={team.color}>
       <NamePanel color={team.color}>
@@ -90,6 +100,13 @@ export const ViewFrame = ({team: teamIndex}: ViewFrameProps) => {
       {
         isDone && (
           <DoneTimePanel color={team.color}>{ lastTime.displayedTime}</DoneTimePanel>
+        )
+      }
+      {
+        isMinecraft && (
+          <NoticePanel color={team.color}>
+            他マイクラ走者の情報は、走者枠でコメントしないでください
+          </NoticePanel>
         )
       }
     </Container>
