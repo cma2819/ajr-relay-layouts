@@ -9,21 +9,15 @@ export const progress = (nodecg: NodeCG): void => {
   const games = nodecg.bundleConfig.games;
 
   const totalTimesTo = (results: CheckpointResults, gameIndex: number, segIndex: number, teamIndex: number): number => {
-    return results.reduce((prev, resultsByTeam, gIndex) => {
+    return results.reduce((prev, resultsByGame, gIndex) => {
       if (gIndex > gameIndex) {
         return prev;
       }
       if (gIndex === gameIndex) {
-        return prev + resultsByTeam.reduce((p, results, sIndex) => {
-          if (sIndex > segIndex) {
-            return p;
-          }
-          return p + (results?.[teamIndex]?.time ?? 0);
-        }, 0);
+        return prev + (resultsByGame?.[segIndex]?.[teamIndex]?.time ?? 0);
       }
-      return prev + resultsByTeam.reduce((p, results) => {
-        return p + (results?.[teamIndex]?.time ?? 0);
-      }, 0);
+      const [lastInGame] = resultsByGame.slice(-1);
+      return prev + (lastInGame?.[teamIndex]?.time ?? 0);
     }, 0);
   }
 
@@ -40,7 +34,6 @@ export const progress = (nodecg: NodeCG): void => {
           const resultTimes = [...results.map((r, tIndex) => r?.time ? totalTimesTo(cpResults, gIndex, sIndex, tIndex) : Number.MAX_VALUE)].sort((a, b) => {
             return a - b;
           });
-          logger.debug(JSON.stringify(resultTimes));
           const ranks = results.map((r, tIndex) => r ? resultTimes.indexOf(totalTimesTo(cpResults, gIndex, sIndex, tIndex)) + 1 : null);
 
           return {
