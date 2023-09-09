@@ -78,6 +78,12 @@
         "width": "1920",
         "height": "108",
         "singleInstance": false
+      },
+      {
+        "file": "progress-chart.html",
+        "width": "1920",
+        "height": "1080",
+        "singleInstance": false
       }
     ],
     "assetCategories": []

@@ -10,10 +10,14 @@ ChartJS.register(
   LineElement,
 )
 
-export const RankProgress = () => {
+type RankProgressProps = {
+  all?: boolean;
+}
+
+export const RankProgress = ({ all }: RankProgressProps) => {
   const progress = useReplicant('rank-progress');
 
-  const sliced = progress.slice(-5);
+  const sliced = all ? progress : progress.slice(-5);
   const teams = useTeams();
 
   const data = {
